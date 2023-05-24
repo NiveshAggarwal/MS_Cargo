@@ -1,4 +1,4 @@
-#include<Server.h>
+#include<Servo.h>
 
 Servo ser1;
 int IrL = 2;
@@ -27,7 +27,6 @@ void setup() {
   ser1.write(0);
   pinMode(IrL, INPUT);
   pinMode(IrR, INPUT);
-  pinMode(buzzer, OUTPUT);
   pinMode(mLPWM, OUTPUT);
   pinMode(mRPWM, OUTPUT);
   pinMode(m1, OUTPUT);
@@ -101,13 +100,13 @@ void unloading(){
 
 void loop() {
   int i1 = digitalRead(IrL);
-  int i2 = digitalRead(IrR;
+  int i2 = digitalRead(IrR);
 
   while(dir){
 
     if(i1 == 0 && i2 == 0){
       analogWrite(mLPWM, rampspd);
-      analogWrite(mLPWM, rampspd);
+      analogWrite(mRPWM, rampspd);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -116,7 +115,7 @@ void loop() {
     }
     else if(i1 == 1 && i2 == 0){
       analogWrite(mLPWM, 0);
-      analogWrite(mLPWM, turnspd);
+      analogWrite(mRPWM, turnspd);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -127,7 +126,7 @@ void loop() {
     }
     else if(i1 == 0 && i2 == 1){
       analogWrite(mLPWM, turnspd);
-      analogWrite(mLPWM, 0);
+      analogWrite(mRPWM, 0);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -138,7 +137,7 @@ void loop() {
     }
     else if(i1 == 1 && i2 == 1){
       analogWrite(mLPWM, 0);
-      analogWrite(mLPWM, 0);
+      analogWrite(mRPWM, 0);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -153,7 +152,7 @@ void loop() {
   while(!dir){
     if(i1 == 0 && i2 == 0){
       analogWrite(mLPWM, rampspd);
-      analogWrite(mLPWM, rampspd);
+      analogWrite(mRPWM, rampspd);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -163,7 +162,7 @@ void loop() {
     }
     else if(i1 == 1 && i2 == 0){
       analogWrite(mLPWM, 0);
-      analogWrite(mLPWM, turnspd);
+      analogWrite(mRPWM, turnspd);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -174,7 +173,7 @@ void loop() {
     }
     else if(i1 == 0 && i2 == 1){
       analogWrite(mLPWM, turnspd);
-      analogWrite(mLPWM, 0);
+      analogWrite(mRPWM, 0);
       digitalWrite(m1, HIGH);
       digitalWrite(m2, LOW);
       digitalWrite(m3, HIGH);
@@ -182,6 +181,17 @@ void loop() {
       digitalWrite(LedR, HIGH);
       delay(200);
       digitalWrite(LedR, LOW);
+    }
+    else if(i1 == 1 && i2 == 1){
+      analogWrite(mLPWM, 0);
+      analogWrite(mRPWM, 0);
+      digitalWrite(m1, HIGH);
+      digitalWrite(m2, LOW);
+      digitalWrite(m3, HIGH);
+      digitalWrite(m4, LOW);
+      digitalWrite(LedL, HIGH);
+      delay(200);
+      digitalWrite(LedL, LOW);
     }
   }
 }
