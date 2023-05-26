@@ -10,9 +10,9 @@ int led=13;
 int enr=6; 
 int  enl=5;
 
-int vspeed=150;    
-int tspeed=100;
-int tdelay=1000;
+int vspeed=255;    
+int tspeed=180;
+int tdelay=100;
 void  setup()
 {
  pinMode(mr1,OUTPUT);
@@ -38,12 +38,12 @@ void loop()
 
   if(svl==0  && svr==1)
   {
-  left(); //belok kiri
+  right(); //belok kiri
   }
  
   if(svl==1 && svr==0)
   { 
-  right(); //belok kanan
+  left(); //belok kanan
   }
   
   if(svl==0 && svr==0)
